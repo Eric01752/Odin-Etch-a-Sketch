@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    gap: 0;
+    width: 512px;
+    height: 512px;
+    margin-top: 20vh;
+    border: 5px gray solid;
+}
+
+.grid-square {
+    width: 32px;
+    height: 32px;
+}
+
+.hover-color {
+    background-color: black;
+}
