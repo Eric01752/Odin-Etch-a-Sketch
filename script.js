@@ -20,3 +20,12 @@ function genGrid(size) {
 }
 
 genGrid(16);
+
+const btn = document.querySelector('.btn');
+const cells = document.querySelectorAll('.grid-square');
+
+btn.addEventListener('click', () => {
+    cells.forEach((cell) => {
+        cell.classList.remove('hover-color');
+    });
+});

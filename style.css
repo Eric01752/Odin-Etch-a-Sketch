@@ -5,9 +5,18 @@
 
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.btn {
+    margin-top: 15vh;
+    width: 100px;
+    height: 30px;
+
 }
 
 .container {
@@ -15,7 +24,7 @@ body {
     gap: 0;
     width: 512px;
     height: 512px;
-    margin-top: 20vh;
+    margin-top: 5vh;
     border: 5px gray solid;
 }
 
