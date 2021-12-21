@@ -1,6 +1,13 @@
-function genGrid(size) {
-    let container = document.querySelector('.container');
+const GRID_DIMENSIONS = 512;
+const GRID_LIMIT = 100;
 
+let currentGridSize = 16;
+
+const container = document.querySelector('.container');
+const btnClear = document.querySelector('.btn-clear');
+const btnNewGrid = document.querySelector('.btn-new-grid');
+
+function genGrid(size) {
     for(let i = 0;i < size;i++) {
         let col = document.createElement('div');
         col.classList.add('col');
@@ -8,6 +15,8 @@ function genGrid(size) {
         for(let x = 0;x < size;x++) {
             let cell = document.createElement('div');
             cell.classList.add('grid-square');
+            cell.style.width = ((GRID_DIMENSIONS/size).toString() + 'px');
+            cell.style.height = ((GRID_DIMENSIONS/size).toString() + 'px');
 
             cell.addEventListener('mouseover', (e) => {
                 e.target.classList.add('hover-color');
@@ -19,13 +28,29 @@ function genGrid(size) {
     }
 }
 
-genGrid(16);
+function removeGrid() {
+    while(container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
 
-const btn = document.querySelector('.btn');
-const cells = document.querySelectorAll('.grid-square');
+function clearGrid() {
+    removeGrid();
+    genGrid(currentGridSize);
+}
 
-btn.addEventListener('click', () => {
-    cells.forEach((cell) => {
-        cell.classList.remove('hover-color');
-    });
+btnClear.addEventListener('click', clearGrid);
+
+btnNewGrid.addEventListener('click', () => {
+    let input = parseInt(prompt('Enter a new grid size (limit 100):'));
+    if(input > GRID_LIMIT || input <= 0) {
+        alert('Grid size out of range. Enter a number between 1 and 100');
+    }
+    else {
+        currentGridSize = input;
+        removeGrid();
+        genGrid(input);
+    }
 });
+
+genGrid(currentGridSize);
