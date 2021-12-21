@@ -18,12 +18,16 @@ body {
     height: 30px;
 }
 
+.select-container {
+    margin-top: 2.5vh;
+}
+
 .container {
     display: flex;
     gap: 0;
     width: 512px;
     height: 512px;
-    margin-top: 5vh;
+    margin-top: 2.5vh;
     border: 5px gray solid;
 }
 

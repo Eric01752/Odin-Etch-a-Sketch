@@ -1,11 +1,20 @@
 const GRID_DIMENSIONS = 512;
 const GRID_LIMIT = 100;
 
+const select = document.getElementById('color-picker');
+
 let currentGridSize = 16;
+let currentColor = 'black';
 
 const container = document.querySelector('.container');
 const btnClear = document.querySelector('.btn-clear');
 const btnNewGrid = document.querySelector('.btn-new-grid');
+
+function setColor(color) {
+    currentColor = color;
+}
+
+select.onchange = (e) => setColor(e.target.value);
 
 function genGrid(size) {
     for(let i = 0;i < size;i++) {
@@ -19,7 +28,7 @@ function genGrid(size) {
             cell.style.height = ((GRID_DIMENSIONS/size).toString() + 'px');
 
             cell.addEventListener('mouseover', (e) => {
-                e.target.classList.add('hover-color');
+                e.target.style.backgroundColor = currentColor;
             });
 
             col.appendChild(cell);
